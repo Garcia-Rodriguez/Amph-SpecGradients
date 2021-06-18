@@ -2,6 +2,7 @@
 Compilation of analyses included in "Causes and consequences of the latitudinal variation in amphibian speciation rates"
 
 Includes:
+
 Bioregions: Definition of studied bioregions using layers from Olson et al (2001, BioScience) for terrestrial ecoregions
 and the reclassification used by Jetz and Fine (2015, PlosOne)
 
