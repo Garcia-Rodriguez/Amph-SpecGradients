@@ -7,6 +7,7 @@ Bioregions: Definition of studied bioregions using layers from Olson et al (2001
 and the reclassification used by Jetz and Fine (2015, PlosOne)
 
 PREDICTORS
+
 Topo.Complex: Global estimation of metrics of terrain complexity (SDaltitude, Roughness, Terrain Ruggedness Index and Topographic Position Index)  
 based on 30' elevation layer available at www.worldclim.org
 
