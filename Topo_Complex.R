@@ -1,6 +1,6 @@
 ####PREDICTORS
 ###TOPOGRAPHIC COMPLEXITY
-alt<- raster("C:/Users/Pichi/Documents/MAPS/alt_30s_bil/alt.bil")
+alt<- raster("~/DATA/alt.bil")
 plot(alt)
 
 ###METRICS SD_alt, Roughness, TRI, TPI
