@@ -8,8 +8,7 @@ and the reclassification used by Jetz and Fine (2015, PlosOne)
 
 PREDICTORS
 
-Topo.Complex: Global estimation of metrics of terrain complexity (SDaltitude, Roughness, Terrain Ruggedness Index and Topographic Position Index)  
-based on 30' elevation layer available at www.worldclim.org
+Topo.Complex: Global estimation of metrics of terrain complexity (SDaltitude, Roughness, Terrain Ruggedness Index and Topographic Position Index) based on 30' elevation layer available at www.worldclim.org
 
 Clim.Stab: For this predictor we estimated two metrics, Mean Climate Change Velocity and Mean Climatic Euclidian distances. In both cases we used 11 periods with
 a maximum temporal depth of 3.3 Mya. Paleoclimatic data was obtained from Brown et al (2018 SciData)
@@ -21,6 +20,7 @@ based on such species composition and estimated NRI.
 Estimations for Time Integrated Area, Area Productivity
 
 CORRELATIVE ANALYSES
+
 OLS_SARs: Regressions between mean Speciation and Absolute Latitude using an assemblage based approach. We conducted this analyses for the entire amphibian radiation and
 also at the Order level
 
