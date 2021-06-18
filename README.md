@@ -6,6 +6,7 @@ Includes:
 Bioregions: Definition of studied bioregions using layers from Olson et al (2001, BioScience) for terrestrial ecoregions
 and the reclassification used by Jetz and Fine (2015, PlosOne)
 
+PREDICTORS
 Topo.Complex: Global estimation of metrics of terrain complexity (SDaltitude, Roughness, Terrain Ruggedness Index and Topographic Position Index)  
 based on 30' elevation layer available at www.worldclim.org
 
@@ -16,5 +17,10 @@ NRI: Estimation of Mean Net Relatedness Index for each studied bioregion. For th
 distribution of trees from Jetz and Pyron (2018, Nature Ecology and Evolution). For each bioregion we first defined species pools, then prunned the trees 
 based on such species composition and estimated NRI.
 
+Estimations for Time Integrated Area, Area Productivity
+
+CORRELATIVE ANALYSES
 OLS_SARs: Regressions between mean Speciation and Absolute Latitude using an assemblage based approach. We conducted this analyses for the entire amphibian radiation and
 also at the Order level
+
+LMs: Linear models Speciation~each predictor
