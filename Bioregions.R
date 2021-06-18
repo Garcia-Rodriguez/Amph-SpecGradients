@@ -8,15 +8,15 @@ library(maps)
 library(mapdata)
 
 ###SPECIATION RATE LAYER to define resolution of the layer to rasterize BIOMES AND REALMS
-Spec.Rate<-raster("C:/Users/Pichi/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/RASTERS/Speciation.asc")
+Spec.Rate<-raster("~/DATA/Speciation.asc")
 mod.r<-raster(ncol=360,nrow=126,xmn=-180, xmx=180, ymn=-55, ymx=71)
 
 ####OLSON TERRESTRIAL BIOMES (2001)
-olson<-rgdal::readOGR(dsn ="C:/Users/Pichi/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/DATA/REALMS", layer="REALMS_OLSON")
+olson<-rgdal::readOGR(dsn ="~/DATA/REALMS", layer="REALMS_OLSON")
 unique(olson$BIOME)
 
 ####REALMS AS JETZ&FINE
-JetzFine<-rgdal::readOGR(dsn ="C:/Users/Pichi/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/DATA/REALMS", layer="REALMS_JETZ&FINE")
+JetzFine<-rgdal::readOGR(dsn ="~/DATA/REALMS", layer="REALMS_JETZ&FINE")
 
 ###RASTERIZE BIOMES
 biome.r <- rasterize(olson, mod.r, field = 'BIOME')
@@ -28,7 +28,7 @@ biom_realm<-stack(biome.r, realm.r)
 names(biom_realm)<-c("biom", "realm")
 
 ####GET BIOME REALM FOR EACH CELL ON PAM
-load("C:/Users/Pichi/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/DATA/amphi_pam.Rdata")
+load("~DATA/amphi_pam.Rdata")
 PAM<-amphi_pam$Presence_and_Absence_Matrix
 XY<-PAM[ ,1:2]
 cell_Bioregs<-as.data.frame(extract(biom_realm, XY))
@@ -69,7 +69,7 @@ unique(BioRegion)
 
 ###ADD REGS TO PAM
 PAM_REGS<-cbind(BioRegion, PAM_Bioregs)
-#write.csv(PAM_REGS, "C:/Users/Pichi/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/RESULTS/PAM+BIOREGS.csv")
+#write.csv(PAM_REGS, "~/RESULTS/PAM+BIOREGS.csv")
 
 #REMOVE ROWS OF NOT ANALIZED BIOREGS
 PAM_REGS<-PAM_REGS[!(PAM_REGS$BioRegion=="TEMP_IndoMalay"|
