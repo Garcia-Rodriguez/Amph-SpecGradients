@@ -2,12 +2,12 @@
 Compilation of analyses included in "Causes and consequences of the latitudinal variation in amphibian speciation rates"
 
 Includes:
---------------------------------------------------------------------------------------------------------------------------
-STUDY UNITS
+
+Study Units
 ===========
 Bioregions: Definition of studied bioregions using layers from Olson et al (2001, BioScience) for terrestrial ecoregions and the reclassification used by Jetz and Fine (2015, PlosOne)
 
-PREDICTORS
+Predictors
 ==========
 Topo.Complex: Global estimation of metrics of terrain complexity (SDaltitude, Roughness, Terrain Ruggedness Index and Topographic Position Index) based on 30' elevation layer available at www.worldclim.org
 
@@ -20,7 +20,7 @@ based on such species composition and estimated NRI.
 
 Estimations for Time Integrated Area, Area Productivity
 
-CORRELATIVE ANALYSES
+Correlative analyses
 ====================
 OLS_SARs: Regressions between mean Speciation and Absolute Latitude using an assemblage based approach. We conducted this analyses for the entire amphibian radiation and
 also at the Order level
