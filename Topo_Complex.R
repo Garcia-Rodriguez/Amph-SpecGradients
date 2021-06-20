@@ -1,5 +1,6 @@
 ####PREDICTORS
 ###TOPOGRAPHIC COMPLEXITY
+### Download 30seconds elevation layer (alt.bil) from www.worldclim.org
 alt<- raster("~/DATA/alt.bil")
 plot(alt)
 
@@ -28,15 +29,4 @@ plot(TPI_1dg)
 TOPOMETRICS<-stack(TCI_1dg, Rough_1dg, TRI_1dg, TPI_1dg)
 plot(TOPOMETRICS)
 
-##EXTRACT DATA
-XY<-cbind(PAM_REGS$`Longitude(x)`, PAM_REGS$`Latitude(y)`)
-TopoComplexCell<- as.data.frame(extract(TOPOMETRICS,XY))
-TopoComplexRegs<-as.data.frame(cbind(as.character(PAM_REGS$BioRegion),XY,TopoComplexCell))
-names(TopoComplexRegs)<-c("BioRegion", "Lon", "Lat", "SD_Alt", "Rough", "TRI", "TPI")
-
-###MEANS PER REGION
-library(dplyr)
-
-MeanTopoComplexReg<-TopoComplexRegs %>%
-  group_by(BioRegion) %>%
-  summarise_at(vars(-c(Lon,Lat)), funs(mean(., na.rm=TRUE)))
+###THEN EXTRACT DATA AND ESTIMATE MEANS by BIOREGION
