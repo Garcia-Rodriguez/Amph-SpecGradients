@@ -5,7 +5,7 @@ Includes:
 
 Study Units
 ===========
-Bioregions: Definition of studied bioregions using layers from Olson et al (2001, BioScience) for terrestrial ecoregions and the reclassification used by Jetz and Fine (2015, PlosOne)
+Bioregions: Definition of studied bioregions using layers from Olson et al (2001, BioScience) for terrestrial ecoregions and the reclassification used by Jetz and Fine (2012, PlosOne)
 
 Predictors
 ==========
@@ -18,11 +18,4 @@ NRI: Estimation of Mean Net Relatedness Index for each studied bioregion. For th
 distribution of trees from Jetz and Pyron (2018, Nature Ecology and Evolution). For each bioregion we first defined species pools, then prunned the trees 
 based on such species composition and estimated NRI.
 
-Estimations for Time Integrated Area, Area Productivity
-
-Correlative analyses
-====================
-OLS_SARs: Regressions between mean Speciation and Absolute Latitude using an assemblage based approach. We conducted this analyses for the entire amphibian radiation and
-also at the Order level
-
-LMs: Linear models Speciation~each predictor
+Estimations for Time Integrated Area, Area-Productivity, and Temperature were obtained from the Supplementary Material in Jetz W, Fine PVA (2012) Global Gradients in Vertebrate Diversity Predicted by Historical Area-Productivity Dynamics and Contemporary Environment. PLoS Biol 10(3): e1001292. https://doi.org/10.1371/journal.pbio.1001292 
