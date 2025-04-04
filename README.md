@@ -1,5 +1,5 @@
 # Amph-SpecGradients
-Compilation of analyses included in "Causes and consequences of the latitudinal variation in amphibian speciation rates"
+Compilation of analyses included in "The latitudinal variation in amphibian speciation rates revisited"
 
 Includes:
 
