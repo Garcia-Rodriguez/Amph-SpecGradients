@@ -1,5 +1,5 @@
-# SAR models Speciation-Latitude (See Figure 1 of manuscript)
-# By Adrian Garcia
+# SAR models Speciation-Latitude
+# Adrian Garcia-Rodriguez
 # Last update: 16.3.2025
 rm(list=ls())
 gc()
@@ -9,13 +9,10 @@ library(spdep)
 library(ncf)
 library(ggpubr)
 
-setwd("C:/Users/Administrator/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/")
-setwd("C:/Users/garciaa/Dropbox/MANUSCRIPTS/2025/LGSpeciation/")
-
-load("THIRD TRY/Docs_Submission_NEE/Codes/SARs_Rich_Lat_CELLS.RData")
+setwd("~/LGSpeciation/")
 
 ###DATA
-Data_all<- read.csv("Codes/Github/Data/XY_RichSpec_all.csv")
+Data_all<- read.csv("~/XY_RichSpec_all.csv")
 Data_all<- Data_all[, 2:5]
 
 ####OLS
@@ -83,7 +80,7 @@ RegresALL
 
 #######ANALYSES BY ORDER##############
 ###DATA
-Data_ANURA<- read.csv("Codes/Github/Data/XY_RichSpec_anura.csv")
+Data_ANURA<- read.csv("~/XY_RichSpec_anura.csv")
 Data_ANURA<- Data_ANURA[, 2:5]
 
 ####OLS
@@ -143,7 +140,7 @@ Regres_ANURA<-ggplot(data = Data_ANURA, aes(x = abs(Lat)  , y = mean.speciationA
 Regres_ANURA
 
 ###CAUDATA
-Data_CAUDATA<- read.csv("Codes/Github/Data/XY_RichSpec_caudata.csv")
+Data_CAUDATA<- read.csv("~/XY_RichSpec_caudata.csv")
 Data_CAUDATA<- Data_CAUDATA[, 2:5]
 
 ####OLS
@@ -200,7 +197,7 @@ Regres_CAUDATA<-ggplot(data = Data_CAUDATA, aes(x = abs(Lat) , y = mean.speciati
 Regres_CAUDATA
 
 ###GYMNOPHIONA
-Data_GYMNO<- read.csv("Codes/Github/Data/XY_RichSpec_gymno.csv")
+Data_GYMNO<- read.csv("~/XY_RichSpec_gymno.csv")
 Data_GYMNO<- Data_GYMNO[, 2:5]
 
 ####OLS
@@ -257,8 +254,5 @@ Regres_GYMNO<-ggplot(data = Data_GYMNO, aes(x = abs(Lat) , y = mean.speciationGy
 Regres_GYMNO
 
 plots<-list(RegresALL,Regres_ANURA,Regres_CAUDATA,Regres_GYMNO)
-
 ggarrange(plotlist = plots, ncol = 1, nrow = 4) #Plot saved as PDF (10x3 Portrait)
-
-save.image("C:/Users/Administrator/Dropbox/MANUSCRIPTS/2025/LGSpeciation/Codes/SARs_Rich_Lat_CELLS.RData")
 
