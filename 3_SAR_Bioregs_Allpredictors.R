@@ -1,7 +1,6 @@
-####CODE for OLS and SARs for Bioregions
-#Used in: "The latitudinal variation in amphibian speciation rates revisited"
-#Author: Adrian Garcia Rodriguez
-#Last update: March 24, 2025
+# OLS and SARs for Bioregions
+# Author: Adrian Garcia Rodriguez
+# Last update: March 24, 2025
 rm(list=ls())
 gc()
 
@@ -9,17 +8,10 @@ gc()
 PKGs <- c("raster","rlang", "dplyr","rgdal","maps", "maptools","sp","spocc","plyr", "tidyverse", "pbapply", "sf", "ggplot2", "rgeos", "R.utils","data.table", "here",  "RColorBrewer", "rasterVis", "beepr", "stringr", "corrplot", "AER", "sjPlot", "sjmisc", "sjlabelled", "ggpubr", "blmeco","partR2", "magrittr", "glmm.hp", "GLMMadaptive", "gridExtra", "lme4", "furrr", "spdep", "ncf","spdep", "flextable", "stargazer")
 sapply(PKGs, require, character.only = TRUE)
 
-setwd("C:/Users/Lenovo/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/THIRD TRY/Docs_Submission_NEE/Codes/")
-setwd("C:/Users/garciaa/Dropbox/PANDEMIC PRIORITIES/5.LGD_Speciation/THIRD TRY/Docs_Submission_NEE/Codes/")
-setwd("C:/Users/garciaa/Dropbox/MANUSCRIPTS/2025/LGSpeciation/Codes/GitHub")
-
-setwd("C:/Users/Administrator/Dropbox/MANUSCRIPTS/2025/LGSpeciation/")
-
-##Load environment
-#load("Codes/SARs_preds_bioregs.RData")
+setwd("~/LGSpeciation/")
 
 #Load data 
-BioregData<- read.csv("Data/DataBioregs_Spec_Preds_FINAL.csv", sep=",")
+BioregData<- read.csv("~/DataBioregs_Spec_Preds.csv", sep=",")
 BioregData2<-BioregData[ ,c(2:5,7,9,10, 11:14,16,18)]
 names(BioregData2)
 lm_spec_rich<- lm(Richn1dg ~ Mean.Spec.1dg, data=BioregData2)
