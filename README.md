@@ -6,7 +6,7 @@ This repository includes:
    
 2. The code the spatialization and mapping of estimated speciation rates for the overall Amphibian radiation and for each taxonomic Order separately. For this we developed functions (see files ending in "_fun.R") that should be loaded when running the code.
    
-4. The code for the Spatial Autoregressive model testing for the relationship between the six predictor variables consider an mean speciation rates at the bioregion level
+4. The code for the Spatial Autoregressive model testing for the relationship between the six predictor variables consider an mean speciation rates at the bioregion level.
    For this analysis we considered bioregions as study unit, using layers from Olson et al (2001, BioScience) for terrestrial ecoregions and the reclassification used by Jetz and Fine (2012, PlosOne)
 As predictors we tested
 Topo.Complex: Global estimation of metrics of terrain complexity (Terrain Ruggedness Index) based on 30' elevation layer available at www.worldclim.org
