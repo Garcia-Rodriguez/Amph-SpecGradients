@@ -12,13 +12,13 @@ setwd("~/LGSpeciation/")
 
 #Load data 
 BioregData<- read.csv("~/DataBioregs_Spec_Preds.csv", sep=",")
-BioregData2<-BioregData[ ,c(2:5,7,9,10, 11:14,16,18)]
-names(BioregData2)
+#head(BioregData)
+
 lm_spec_rich<- lm(Richn1dg ~ Mean.Spec.1dg, data=BioregData2)
 summary(lm_spec_rich)
 
 ##Test for multicolinearity among predictors
-preds<-BioregData2[, c(6:13)] ##Choose numeric predictors
+preds<-BioregData[, c(6:13)] ##Choose numeric predictors
 df_new <- preds[, order(colnames(preds))]
 
 df_new<-round(df_new,3)
@@ -35,7 +35,7 @@ corrplot(p.mat,title = "Correlations among Predictors", method ="color", type = 
 ########################################################################################
 ########################################################################################
 ###Scale data
-BioregData_sc<-cbind(BioregData2[,1:5], scale(BioregData2[,6:13]))
+BioregData_sc<-cbind(BioregData[,1:5], scale(BioregData[,6:13]))
 hist(BioregData_sc$Mean.Spec.1dg) ##response with normal distribution
 
 ####OLS: Spec Rate as Response and predictors scaled
