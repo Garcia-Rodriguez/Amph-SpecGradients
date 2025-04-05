@@ -1,5 +1,5 @@
 # SAR models Speciation-Latitude
-# Adrian Garcia-Rodriguez
+# Author: Adrian Garcia-Rodriguez
 # Last update: 16.3.2025
 rm(list=ls())
 gc()
