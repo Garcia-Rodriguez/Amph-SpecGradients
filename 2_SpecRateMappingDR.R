@@ -1,7 +1,6 @@
-####THE LATITUDINAL GRADIENT OF SPECIATION IN AMPHIBIANS#####
-#Mapping speciation rates
-#By Adrian Garcia
-#Last update: 16.3.2025
+# Mapping speciation rates
+# Author: Adrian Garcia-Rodriguez
+# Last update: 16.3.2025
 rm(list=ls())
 gc()
 
@@ -11,19 +10,18 @@ sapply(pcks, require, character.only = TRUE)
 #sapply(pcks, install.packages, character.only = TRUE)
 
 #setwd("C:/Users/garciaa/Dropbox/MANUSCRIPTS/2025/LGSpeciation")
-setwd("C:/Users/Administrator/Dropbox/MANUSCRIPTS/2025/LGSpeciation")
-setwd("C:/Users/garciaa/Dropbox/MANUSCRIPTS/2025/LGSpeciation")
+setwd("~/LGSpeciation")
 
 #Load Functions
-source("C:/Users/garciaa/Dropbox/My_R_Functions/DFtoRASTER.R")
-source("C:/Users/garciaa/Dropbox/My_R_Functions/addRates.to.PAM.R")
-source("C:/Users/garciaa/Dropbox/My_R_Functions/PAM_mean.sd.cv_func.R")
+source("~/DFtoRASTER.R")
+source("~/addRates.to.PAM.R")
+source("~/PAM_mean.sd.cv_func.R")
 
 ####SPECIATION RATES (DR)
-ratesFull<-read.csv("DATA/DR_100trees.csv")
+ratesFull<-read.csv("~/DR_100trees.csv")
 
 ####PAM
-load("DATA/amphi_pam.Rdata")
+load("~/amphi_pam.Rdata")
 amphi.pam<- amphi_pam$Presence_and_Absence_Matrix
 
 ###################
@@ -33,9 +31,6 @@ PAM_specrateFULL<-addRates.to.PAM(PAM = amphi.pam, rates = ratesFull) ##This fun
 
 ## Estimate mean, sd and cv speciation per grid cell
 PAMmean.sd.cv_FULL<- PAM_mean.sd.cv(df = PAM_specrateFULL) # 6443 spp   # This function uses the PAM_specrate object created above to estimate statistics across rows
-
-##Save grid level statistics
-write.csv(PAMmean.sd.cv_FULL, "Results/StatsGridCell_ALL.csv")
 
 ## Create Raster maps for each statistic
 mean.sp.rastFULL <- DFtoRaster(PAMmean.sd.cv_FULL,d = 3)
@@ -57,15 +52,6 @@ x=c(1,2,4,6)
 plot(stack.FULL[[x]], col= rev(plasma(256)), main= names(stack.FULL[[x]]))
   names(stack.FULL)
 
-## Save rasters
-writeRaster(mean.sp.rastFULL,"RESULTS/Rasters/mean.sp.rastFULL.asc", overwrite=TRUE)
-writeRaster(sd.sp.rastFULL,"RESULTS/Rasters/sd.sp.rastFULL.asc", overwrite=TRUE )
-writeRaster(cv.sp.rastFULL,"RESULTS/Rasters/cv.sp.rastFULL.asc", overwrite=TRUE)
-writeRaster(rich.rastFULL,"RESULTS/Rasters/rich.rastFULL.asc", overwrite=TRUE)
-writeRaster(max.rastFULL,"RESULTS/Rasters/max.rastFULL.asc", overwrite=TRUE)
-writeRaster(min.rastFULL,"RESULTS/Rasters/min.rastFULL.asc", overwrite=TRUE)
-writeRaster(range.rastFULL,"RESULTS/Rasters/range.rastFULL.asc", overwrite=TRUE)
-
 ###################
 #     ANURANS     #
 ###################
@@ -77,15 +63,6 @@ PAM_specrateANURA <- addRates.to.PAM(PAM = amphi.pam, rates = ratesAnurans) #568
 ###Estimate mean, sd and cv speciation per grid cell
 PAMmean.sd.cv_ANURA<- PAM_mean.sd.cv(df = PAM_specrateANURA)
 
-###Create Rasters
-mean.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 3)
-sd.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 4)
-cv.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 5)
-rich.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 6)
-max.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 7)
-min.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 8)
-range.sp.rastANURA <- DFtoRaster(PAMmean.sd.cv_ANURA,d = 9)
-
 ## Stack rasters
 stack.ANURA <- stack(rich.rastANURA, mean.sp.rastANURA, sd.sp.rastANURA, cv.sp.rastANURA,  min.sp.rastANURA, max.sp.rastANURA,range.sp.rastANURA)
 
@@ -96,15 +73,6 @@ names(stack.ANURA) <- c("Spp richness ANURA" ,"mean DR ANURA", "sd DR ANURA", "c
 x=c(1,2,4,6)  
 plot(stack.ANURA[[x]], col= rev(plasma(256)), main= names(stack.ANURA[[x]]))
 names(stack.ANURA)
-
-##Save rasters
-writeRaster(mean.sp.rastANURA,"RESULTS/Rasters/mean.sp.rastANURA.asc", overwrite=TRUE)
-writeRaster(sd.sp.rastANURA,"RESULTS/Rasters/sd.sp.rastANURA.asc", overwrite=TRUE )
-writeRaster(cv.sp.rastANURA,"RESULTS/Rasters/cv.sp.rastANURA.asc", overwrite=TRUE)
-writeRaster(rich.rastANURA,"RESULTS/Rasters/rich.rastANURA.asc", overwrite=TRUE)
-writeRaster(max.sp.rastANURA,"RESULTS/Rasters/max.sp.rastANURA.asc", overwrite=TRUE )
-writeRaster(min.sp.rastANURA,"RESULTS/Rasters/min.sp.rastANURA.asc", overwrite=TRUE)
-writeRaster(range.sp.rastANURA,"RESULTS/Rasters/range.rastANURA.asc", overwrite=TRUE)
 
 ###################  
 #     CAUDATA     #
@@ -137,15 +105,6 @@ x=c(1,2,4,6)
 plot(stack.CAUDATA[[x]], col= rev(plasma(256)), main= names(stack.CAUDATA[[x]]))
 names(stack.CAUDATA)
 
-##Save rasters
-writeRaster(mean.sp.rastCAUDATA,"RESULTS/Rasters/mean.sp.rastCAUDATA.asc", overwrite=TRUE)
-writeRaster(sd.sp.rastCAUDATA,"RESULTS/Rasters/sd.sp.rastCAUDATA.asc", overwrite=TRUE )
-writeRaster(cv.sp.rastCAUDATA,"RESULTS/Rasters/cv.sp.rastCAUDATA.asc", overwrite=TRUE)
-writeRaster(rich.rastCAUDATA,"RESULTS/Rasters/rich.rastCAUDATA.asc", overwrite=TRUE)
-writeRaster(max.sp.rastCAUDATA,"RESULTS/Rasters/max.sp.rastCAUDATA.asc", overwrite=TRUE )
-writeRaster(min.sp.rastCAUDATA,"RESULTS/Rasters/min.sp.rastCAUDATA.asc", overwrite=TRUE)
-writeRaster(range.rastCAUDATA,"RESULTS/Rasters/range.rastCAUDATA.asc", overwrite=TRUE)
-
 ###########################
 #       GYMNOPHIONA       #
 ###########################
@@ -157,15 +116,6 @@ PAM_specrateGYMNO <- addRates.to.PAM(PAM = amphi.pam, rates = ratesGymno)
 ###Estimate speciation statistics per grid cell
 PAMmean.sd.cv_GYMNO<- PAM_mean.sd.cv(df = PAM_specrateGYMNO)
 
-###Create Rasters
-mean.sp.rastGYMNO <- DFtoRaster(PAMmean.sd.cv_GYMNO,d = 3) 
-sd.sp.rastGYMNO <- DFtoRaster(PAMmean.sd.cv_GYMNO,d = 4) 
-cv.sp.rastGYMNO <- DFtoRaster(PAMmean.sd.cv_GYMNO,d = 5)
-rich.rastGYMNO <- DFtoRaster(PAMmean.sd.cv_GYMNO,d = 6)
-max.sp.rastGYMNO <- DFtoRaster(PAMmean.max.cv_GYMNO,d = 7) 
-min.sp.rastGYMNO <- DFtoRaster(PAMmean.min.cv_GYMNO,d = 8)
-range.rastGYMNO <- DFtoRaster(PAMmean.range.cv_GYMNO,d = 9)
-
 ##Plots
 par(mfrow=c(2,2))
 plot(mean.sp.rastGYMNO, col= rev(plasma(256)), main= paste0("Mean speciation DR GYMNOPHIONA"," (",ncol(PAM_specrateGYMNO)-2 ," species)"))
@@ -176,9 +126,4 @@ plot(cv.sp.rastGYMNO, col= rev(inferno(256)), main= paste0("CV DR GYMNOPHIONA","
 
 plot(rich.rastGYMNO, col= rev(inferno(256)), main= paste0("CV DR GYMNOPHIONA"," (",ncol(PAM_specrateGYMNO)-2 ," species)"))
 
-##Save rasters
-writeRaster(mean.sp.rastGYMNO,"RESULTS/Rasters/mean.sp.rastGYMNO.asc", overwrite=TRUE)
-writeRaster(sd.sp.rastGYMNO,"RESULTS/Rasters/sd.sp.rastGYMNO.asc", overwrite=TRUE )
-writeRaster(cv.sp.rastGYMNO,"RESULTS/Rasters/cv.sp.rastGYMNO.asc", overwrite=TRUE)
-writeRaster(rich.rastGYMNO,"RESULTS/Rasters/rich.rastGYMNO.asc", overwrite=TRUE)
 
