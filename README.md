@@ -1,5 +1,4 @@
-# Amph-SpecGradients
-Codes and data used for the analyses included in "The latitudinal variation in amphibian speciation rates revisited"  by Garcia Rodriguez et al.
+# Data and codes from  The latitudinal variation in amphibian speciation rates revisited  by Garcia Rodriguez et al.
 
 This repository includes:
 1. The code for the Spatial Autoregressive model implemented to test for the relatioship between grid-cell mean speciation rates and absolute latitudes
